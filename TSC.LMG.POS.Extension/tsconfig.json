@@ -1,0 +1,14 @@
+{
+  "extends": "./devDependencies/pos-tsconfig-base.json",
+  "compilerOptions": {
+    "lib": [ "es2017", "dom" ],
+    "baseUrl": ".",
+    "paths": {
+      "knockout": [
+        "Typings/knockout"
+      ]
+    },
+    "noImplicitAny": false
+    //"allowUnreachableCode": true
+  }
+}

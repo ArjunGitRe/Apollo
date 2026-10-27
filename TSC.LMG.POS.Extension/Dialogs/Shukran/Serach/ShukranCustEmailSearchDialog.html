@@ -1,0 +1,17 @@
+<div id="emailSearchRoot" style="padding: 12px;">
+    <div style="display: flex; gap: 8px; align-items: center;">
+
+        <input type="email"
+               placeholder="Enter email address…"
+               style="flex: 1; height: 38px; padding: 0 10px; box-sizing: border-box;
+                      font-size: 14px; border: 1px solid #c8c8c8; border-radius: 3px;
+                      background: #fff; color: #1a1a1a;"
+               data-bind="value: email,
+                          valueUpdate: 'input'" />
+
+    </div>
+
+    <div style="color: red; font-size: 11px; margin-top: 4px; min-height: 16px;"
+         data-bind="text: validationMessage">
+    </div>
+</div>

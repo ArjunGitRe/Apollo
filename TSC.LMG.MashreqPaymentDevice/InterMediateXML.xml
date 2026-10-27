@@ -1,0 +1,56 @@
+<InterMediateMsg>
+  <Key id="001">110000</Key>
+  <!--70000-->
+  <Key id="002">110000</Key>
+  <Key id="003">65000</Key>
+  <Key id="004">100000</Key>
+  <Key id="005">70000</Key>
+  <Key id="006">70000</Key>
+  <Key id="007">65000</Key>
+  <Key id="008">165000</Key>
+  <Key id="009">110000</Key>
+  <Key id="010">110000</Key>
+  <Key id="011">110000</Key>
+  <Key id="012">30000</Key>
+  <Key id="015">90000</Key>
+  <Key id="014">30000</Key>
+  <Key id="013">60000</Key>
+  <Key id="016">180000</Key>
+  <Key id="017">80000</Key>
+  <Key id="018">102000</Key>
+  <Key id="019">40000</Key>
+  <Key id="020">180000</Key>
+  <Key id="021">70000</Key>
+  <Key id="022">70000</Key>
+  <Key id="023">60000</Key>
+  <Key id="024">110000</Key>
+  <Key id="025">102000</Key>
+  <Key id="026">50000</Key>
+  <Key id="027">50000</Key>
+  <Key id="028">50000</Key>
+  <Key id="029">50000</Key>
+  <Key id="030">110000</Key>
+  <Key id="031">102000</Key>
+  <Key id="032">110000</Key>
+  <Key id="033">80000</Key>
+  <Key id="034">25000</Key>
+  <Key id="035">90000</Key>
+  <Key id="036">90000</Key>
+  <Key id="037">30000</Key>
+  <Key id="038">5000</Key>
+  <Key id="039">70000</Key>
+  <Key id="040">3000</Key>
+  <Key id="041">30000</Key>
+  <Key id="042">17000</Key>
+  <Key id="044">70000</Key>
+  <!-- new xml values -->
+  <Key id="052">110000</Key>
+  <Key id="053">80000</Key>
+  <Key id="055">80000</Key>
+  <Key id="056">180000</Key>
+  <Key id="057">20000</Key>
+  <Key id="058">20000</Key>
+  <Key id="059">20000</Key>
+
+  <Key id="999">180000</Key>
+</InterMediateMsg>

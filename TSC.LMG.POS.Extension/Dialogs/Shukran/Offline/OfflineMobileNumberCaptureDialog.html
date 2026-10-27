@@ -1,0 +1,7 @@
+<div class="pad8">
+    <div class="h4 marginBottom8" data-bind="text: title"></div>
+    <input type="tel" class="width400 textInput" maxlength="12"
+           data-bind="value: mobileNumber, valueUpdate: 'input', event: { keypress: onKeyPress }"
+           placeholder="971XXXXXXXXX" />
+    <div class="error marginTop8" data-bind="visible: errorMessage() !== '', text: errorMessage"></div>
+</div>

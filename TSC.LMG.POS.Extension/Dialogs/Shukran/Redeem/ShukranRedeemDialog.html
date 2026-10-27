@@ -1,0 +1,21 @@
+<div class="shukranRedeemDialog">
+
+    <div style="font-size:16px; margin-bottom:8px;">
+        Available Points :
+        <b data-bind="text: availablePoints"></b>
+    </div>
+
+    <div style="font-size:16px; margin-bottom:15px;">
+        Available Cash Value :
+        <b data-bind="text: availableCashValue"></b>
+    </div>
+
+    <div style="font-size:14px; margin-bottom:5px;">
+        Enter the cash value you want to redeem
+    </div>
+
+    <input type="number"
+           data-bind="value: redeemAmount, event: { keyup: onAmountKeyDown }"
+           style="width:200px; height:35px; font-size:16px;" />
+
+</div>

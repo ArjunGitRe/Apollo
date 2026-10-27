@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OTP Verification</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .otp-root {
+            font-family: "Segoe UI", sans-serif;
+            color: #111827;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .otp-hint {
+            font-size: 12px;
+            color: #6B7280;
+            margin-bottom: 16px;
+        }
+
+        .otp-phone {
+            font-weight: 700;
+            color: #0F1D35;
+        }
+
+        /* Field */
+        .otp-f {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .otp-f label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #6B7280;
+        }
+
+            .otp-f label span {
+                color: #DC2626;
+            }
+
+        .otp-f input {
+            letter-spacing: 0.3em;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            padding: 12px;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 6px;
+            width: 100%;
+            outline: none;
+            font-family: "Segoe UI", sans-serif;
+            background: #FAFAFA;
+            color: #111827;
+        }
+
+        .otp-f input:focus {
+            border-color: #C6973F;
+            background: #fff;
+        }
+
+        .otp-f input.err {
+            border-color: #DC2626;
+            background: #FEF2F2;
+        }
+
+        .otp-errmsg {
+            font-size: 11px;
+            color: #DC2626;
+            min-height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="otp-root">
+
+        <p class="otp-hint">
+            Enter the  OTP : 
+            <span class="otp-phone"></span>
+        </p>
+
+        <div class="otp-f">
+            <label>OTP <span>*</span></label>
+            <input type="text"
+                   maxlength="5"
+                   placeholder="-----"
+                   data-bind="value: otpValue, valueUpdate: 'input', css: { err: otpError() }, event: { keydown: onOtpKeyDown }" />
+            <span class="otp-errmsg" data-bind="text: otpError()"></span>
+        </div>
+
+    </div>
+</body>
+</html>

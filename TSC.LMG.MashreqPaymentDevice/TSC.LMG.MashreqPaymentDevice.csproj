@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\CustomizationPackage.props" />
+
+  <PropertyGroup>
+    <RootNamespace>Contoso.HardwareStation.Peripherals.PaymentDevice</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="InterMediateXML.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="InterMediateXML.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.HardwareAndPeripherals" Version="$(CommerceSdkPackagesVersion)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp">
+      <HintPath>Libraries\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="sgEftInterface">
+      <HintPath>Libraries\sgEftInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="sgEftInterfaceSyncWrapper">
+      <HintPath>Libraries\sgEftInterfaceSyncWrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+
+</Project>

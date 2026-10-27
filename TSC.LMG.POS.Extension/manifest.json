@@ -1,0 +1,280 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "TSC.LMG.Extension",
+  "publisher": "TSC",
+  "version": "1.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "An extension package for LMG Apollo 1.0.0.29",
+
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "dualDisplay": {
+      "customControl": {
+        "controlName": "DualDisplayCustomControl",
+        "htmlPath": "DualDisplay/DualDisplayCustomControl.html",
+        "modulePath": "DualDisplay/DualDisplayCustomControl",
+        "description": "For Dual Display",
+        "name": "DualDisplayCustomControl"
+      }
+    },
+    "extend": {
+      "views": {
+        "CartView": {
+          "linesGrid": {
+            "customColumn1": {
+              "modulePath": "CustomColumnExtensions/Cart/LinesGrid/LinesDiscountGridColumn",
+              "description": "Discount Field",
+              "name": "LinesDiscountGridColumn"
+            }
+          }
+        }
+      },
+      "triggers": [
+        {
+          "name": "PrePayment",
+          "description": "Execute before payment initiated.",
+          "triggerType": "PrePayment",
+          "modulePath": "Triggers/PrePaymentTrigger"
+        },
+        {
+          "name": "PreCustomerClear",
+          "description": "Execute before clear customer initiated..",
+          "triggerType": "PreCustomerClear",
+          "modulePath": "Triggers/PreCustomerClearTrigger"
+        },
+        {
+          "name": "PreReturnTransaction",
+          "description": "Executed before the return transaction is processed.",
+          "triggerType": "PreReturnTransaction",
+          "modulePath": "Triggers/PreReturnTransactionTrigger"
+        },
+        {
+          "name": "PreVoidTransaction",
+          "description": "Executed before the void transaction is processed.",
+          "triggerType": "PreVoidTransaction",
+          "modulePath": "Triggers/PreVoidTransactionTrigger"
+        },
+        {
+          "name": "PreVoidProducts",
+          "description": "Executed before the void products is processed.",
+          "triggerType": "PreVoidProducts",
+          "modulePath": "Triggers/PreVoidProductsTrigger"
+        },
+        {
+          "name": "PreOperation",
+          "description": "Executed before the any operation is triggered",
+          "triggerType": "PreOperation",
+          "modulePath": "Triggers/PreOperationTrigger"
+        }
+
+      ],
+      "requestHandlers": [
+        {
+          "modulePath": "Handlers/PaymentTerminalAuthorizePaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/PaymentTerminalRefundPaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/PaymentTerminalVoidPaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "RequestHandlers/NIVoidRequestHandler/NICardPaymentVoidPaymentRequestHandler"
+        },
+        {
+          "modulePath": "RequestHandlers/NIRefundRequestHandler/NICardPaymentRefundPaymentRequestHandler"
+        }
+      ]
+    },
+    "create": {
+      "templatedDialogs": [
+        {
+          "name": "Shukran Customer Search",
+          "description": "Shukran Customer Search",
+          "modulePath": "Dialogs/Shukran/ShukranCustomerSearchDialog",
+          "htmlPath": "Dialogs/Shukran/ShukranCustomerSearchDialog.html"
+        },
+        {
+          "name": "Shukran Customer Enroll OTP",
+          "description": "Shukran Customer Enroll OTP dialog",
+          "modulePath": "Dialogs/Shukran/EnrollOtp/ShukranCustomerEnrollOTP",
+          "htmlPath": "Dialogs/Shukran/EnrollOtp/ShukranCustomerEnrollOTP.html"
+        },
+        {
+          "name": "Shukran Customer Enroll Preview",
+          "description": "Shukran Customer Enroll Preview dialog",
+          "modulePath": "Dialogs/Shukran/Enroll/EnrollmentPreviewDialog",
+          "htmlPath": "Dialogs/Shukran/Enroll/EnrollmentPreviewDialog.html"
+        },
+        {
+          "name": "Shukran Redeem",
+          "description": "Shukran Redeem dialog",
+          "modulePath": "Dialogs/Shukran/Redeem/ShukranRedeemDialog",
+          "htmlPath": "Dialogs/Shukran/Redeem/ShukranRedeemDialog.html"
+        },
+        {
+          "name": "Shukran Phone Search",
+          "description": "Shukran Search Phone Dialog",
+          "modulePath": "Dialogs/Shukran/Serach/ShukranCustPhoneSearchDialog",
+          "htmlPath": "Dialogs/Shukran/Serach/ShukranCustPhoneSearchDialog.html"
+        },
+        {
+          "name": "Shukran Card Search",
+          "description": "Shukran Search Card Dialog",
+          "modulePath": "Dialogs/Shukran/Serach/ShukranCustCardSearchDialog",
+          "htmlPath": "Dialogs/Shukran/Serach/ShukranCustCardSearchDialog.html"
+        },
+        {
+          "name": "Shukran Email Search",
+          "description": "Shukran Search Email Dialog",
+          "modulePath": "Dialogs/Shukran/Serach/ShukranCustEmailSearchDialog",
+          "htmlPath": "Dialogs/Shukran/Serach/ShukranCustEmailSearchDialog.html"
+        },
+        {
+          "name": "Ni Pay Dialog",
+          "description": "Ni Payment Dialog",
+          "modulePath": "Dialogs/Network/NIPaymentDialog",
+          "htmlPath": "Dialogs/Network/NIPaymentDialog.html"
+        },
+        {
+          "name": "Offline MOB Dialog",
+          "description": "Offline shukran mobile number capture dialog",
+          "modulePath": "Dialogs/Shukran/Offline/OfflineMobileNumberCaptureDialog",
+          "htmlPath": "Dialogs/Shukran/Offline/OfflineMobileNumberCaptureDialog.html"
+        }
+      ],
+      "views": [
+        {
+          "name": "Shukran Customer Profile",
+          "description": "Shukran customer profile details view",
+          "pageName": "ShukranCustomerProfileView",
+          "phonePageName": "ShukranCustomerProfileView",
+          "viewControllerPath": "Views/ShukranCustomerProfileView",
+          "viewDirectory": "Views/"
+
+        },
+        {
+          "name": "Shukran Customer Enrollment",
+          "description": "Shukran customer Enrollment view",
+          "pageName": "ShukranCustomerEnrollmentView",
+          "phonePageName": "ShukranCustomerEnrollmentView",
+          "viewControllerPath": "Views/Shukran/Enroll/ShukranCustomerEnrollmentView",
+          "viewDirectory": "Views/Shukran/Enroll/"
+
+        }
+      ],
+      "operations": [
+        {
+          "name": "Get Last Transaction",
+          "description": "Get the last transaction from the payment device and process it according to the status received",
+          "operationId": "6100",
+          "operationRequestFactoryPath": "Operations/NeoPay/GetLastTransaction/GetLastTransactionOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/GetLastTransaction/GetLastTransactionOperationRequestHandler"
+        },
+        {
+          "name": "Get Totals",
+          "description": "Print current totals on the device",
+          "operationId": "6101",
+          "operationRequestFactoryPath": "Operations/NeoPay/GetTotals/GetTotalsOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/GetTotals/GetTotalsOperationRequestHandler"
+        },
+        {
+          "name": "Card Reconcile",
+          "description": "To perform EOD/Reconiliation on the device",
+          "operationId": "6102",
+          "operationRequestFactoryPath": "Operations/NeoPay/Reconciliation/ReconciliationOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/Reconciliation/ReconciliationOperationRequestHandler"
+        },
+        {
+          "name": "Duplicate",
+          "description": "To take Duplicate on the device",
+          "operationId": "6103",
+          "operationRequestFactoryPath": "Operations/NeoPay/Duplicate/DuplicateOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/Duplicate/DuplicateOperationRequestHandler"
+        },
+        {
+          "name": "Standalone",
+          "description": "To make device Standalone",
+          "operationId": "6104",
+          "operationRequestFactoryPath": "Operations/NeoPay/Standalone/StandaloneOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/Standalone/StandaloneOperationRequestHandler"
+        },
+        {
+          "name": "SynchDateTime",
+          "description": "To synch date time.",
+          "operationId": "6105",
+          "operationRequestFactoryPath": "Operations/NeoPay/SynchDateTime/SynchDateTimeOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/NeoPay/SynchDateTime/SynchDateTimeOperationRequestHandler"
+        },
+        {
+          "name": "Shukran profile view",
+          "description": "To view the shukran profile",
+          "operationId": "6106",
+          "operationRequestFactoryPath": "Operations/Shukran/Profile/ShukranProfileOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Shukran/Profile/ShukranProfileOperationRequestHandler"
+        },
+        {
+          "name": "Shukran Enrollmnet view",
+          "description": "To view the from for  shukran profile enroll",
+          "operationId": "6107",
+          "operationRequestFactoryPath": "Operations/Shukran/Enroll/ShukranEnrollOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Shukran/Enroll/ShukranEnrollOperationRequestHandler"
+        },
+        {
+          "name": "Shukran Voucher Redeem",
+          "description": "Shukran voucher redeem",
+          "operationId": "6108",
+          "operationRequestFactoryPath": "Operations/RedeemVoucher/RedeemVoucherOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/RedeemVoucher/RedeemVoucherOperationRequestHandler"
+        },
+        {
+          "name": "Shukran Voucher Reverse",
+          "description": "Shukran voucher Reverse",
+          "operationId": "6109",
+          "operationRequestFactoryPath": "Operations/ReverseVoucher/ReverseVoucherOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/ReverseVoucher/ReverseVoucherOperationRequestHandler"
+        },
+        {
+          "name": "NI PAY",
+          "description": "NI Integration Sales",
+          "operationId": "6110",
+          "operationRequestFactoryPath": "Operations/Network/NIPay/NIPaymentOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Network/NIPay/NIPaymentOperationRequestHandler"
+        },
+        {
+          "name": "AANI PAY",
+          "description": "Aani Integration Sales",
+          "operationId": "6111",
+          "operationRequestFactoryPath": "Operations/Network/AaniPay/AaniPayOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Network/AaniPay/AaniPayOperationRequestHandler"
+        },
+        {
+          "name": "NCPI PAY",
+          "description": "NCPI Integration Sales",
+          "operationId": "6112",
+          "operationRequestFactoryPath": "Operations/Network/NcpiPay/NcpiPayOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Network/NcpiPay/NcpiPayOperationRequestHandler"
+        },
+        {
+          "name": "Offline Shukran",
+          "description": "offline shukran transactions",
+          "operationId": "6113",
+          "operationRequestFactoryPath": "Operations/Shukran/Offline/OfflineShukranOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Shukran/Offline/OfflineShukranOperationRequestHandler"
+        }
+      ],
+      "requestHandlers": [
+        {
+          "name": "Shukran Search",
+          "modulePath": "RequestHandlers/Shukran/SearchShukranForPaymentRequestHandler"
+        }
+      ]
+    }
+  }
+}

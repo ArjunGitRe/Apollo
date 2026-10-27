@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>NI Payment</title>
+</head>
+<body>
+    <div>
+        <h3>Amount :</h3><br /><br />
+        <input type="number"
+               style="text-align:left"
+               id="amount"
+               name="Amount"
+               data-bind="value: Amount" /><br /><br /><br /><br />
+    </div>
+    <br />
+    <!--<div>
+        <h3>Source ID :</h3><br /><br />
+        <input type="text"
+               id="SourceId"
+               name="SourceId"
+               disabled
+               data-bind="value: SourceId" /><br /><br /><br /><br />
+    </div>-->
+    <br />
+    <div>
+        <button id="createInvoice"
+                data-bind="click: createInvoice"
+                class="primaryButton"
+                style="height:40px;width:100%;padding:inherit;background-color:lightgrey;color:black;font-weight:bold;border:none;border-radius:4px;margin-top:5px">
+            Request Payment
+        </button><br /><br /><br /><br />
+    </div>
+    <div>
+        <button id="checkStatus"
+                data-bind="click: CheckStatus"
+                style="height:40px;width:100%;padding:inherit;background-color:lightgrey;color:black;font-weight:bold;border:none;border-radius:4px">
+            Check Status
+        </button><br /><br /><br /><br />
+    </div>
+    <label style="display:block;min-height:60px;color:red;font-weight:bold" id="statusResponse"></label>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\CustomizationPackage.props" />
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net472</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Installers.ScaleUnit" Version="$(CommerceSdkPackagesVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\TSC.LMG.ChannelDatabase\TSC.LMG.ChannelDatabase.csproj" />
+	  <ProjectReference Include="..\TSC.LMG.CommerceRuntime\TSC.LMG.CommerceRuntime.csproj" />
+	  <ProjectReference Include="..\TSC.LMG.POS.Extension\TSC.LMG.POS.Extension.csproj" />
+	</ItemGroup>
+	
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="cd /d &quot;$(ProjectDir)..\TSC.LMG.Scaleunit.Installer\bin\Debug\net472&quot;&#xD;&#xA;TSC.LMG.Scaleunit.Installer.exe install" />
+	</Target>
+
+</Project>

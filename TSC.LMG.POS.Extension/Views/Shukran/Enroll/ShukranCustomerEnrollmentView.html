@@ -1,0 +1,324 @@
+<style>
+    .enr {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: #F3F4F6;
+        font-family: "Segoe UI", sans-serif;
+        font-size: 13px;
+        color: #111827;
+    }
+
+    .enr-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 20px;
+    }
+
+    /* Card */
+    .enr-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+
+    .enr-card__title {
+        padding: 9px 14px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0F1D35;
+        background: #F9FAFB;
+        border-bottom: 1px solid #E5E7EB;
+    }
+
+    .enr-card__body {
+        padding: 12px 14px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px 14px;
+        align-items: start;
+    }
+
+    /* Section divider inside single card */
+    .enr-section-divider {
+        grid-column: 1 / -1;
+        border: none;
+        border-top: 1px solid #E5E7EB;
+        margin: 6px 0;
+    }
+
+    .enr-section-label {
+        grid-column: 1 / -1;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6B7280;
+        padding-bottom: 2px;
+    }
+
+    /* Fields */
+    .enr-f {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .enr-f label {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #111827;
+    }
+
+    .enr-f label span {
+        color: #DC2626;
+    }
+
+    .enr-f input, .enr-f select {
+        padding: 7px 9px;
+        font-size: 12px;
+        font-family: "Segoe UI", sans-serif;
+        border: 1.5px solid #D1D5DB;
+        border-radius: 5px;
+        background: #FAFAFA;
+        color: #111827;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .enr-f input:focus, .enr-f select:focus {
+        border-color: #C6973F;
+        background: #fff;
+    }
+
+    .enr-f input.err {
+        border-color: #DC2626;
+    }
+
+    .enr-f .errmsg {
+        font-size: 10px;
+        color: #DC2626;
+        min-height: 13px;
+    }
+
+    .enr-f select {
+        appearance: none;
+        cursor: pointer;
+    }
+
+    /* Button */
+    .btn-gold {
+        padding: 9px 24px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #C6973F, #E8BF6A);
+        color: #0F1D35;
+    }
+
+    .btn-gold:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+</style>
+
+<div id="enrollRoot" class="enr">
+    <div class="enr-body">
+
+        <div class="enr-card">
+            <div class="enr-card__title">Enrollment Details</div>
+            <div class="enr-card__body">
+
+                <!-- ── Personal Details ── -->
+                <div class="enr-section-label">Personal Details</div>
+
+                <div class="enr-f">
+                    <label>First Name <span>*</span></label>
+                    <input type="text" placeholder="First name"
+                           data-bind="value: firstName, css: { err: firstNameError() }" />
+                    <span class="errmsg" data-bind="text: firstNameError()"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Last Name <span>*</span></label>
+                    <input type="text" placeholder="Last name"
+                           data-bind="value: lastName, css: { err: lastNameError() }" />
+                    <span class="errmsg" data-bind="text: lastNameError()"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Date of Birth</label>
+                    <div id="datePickerDob" data-bind="valueUpdate: 'afterkeydown'"></div>
+                    <span data-bind="text: dobError" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Gender</label>
+                    <select id="customerGenderInput" data-bind="options: genderOption,
+                                            optionsText:'Text',
+                                            optionsValue:'Value',
+                                            optionsCaption: 'Select Gender',
+                                            value: gender">
+                    </select>
+                    <span class="errmsg"></span>
+                </div>
+
+                <div class="enr-f" style="position: relative;">
+                    <label>Nationality</label>
+
+                    <!-- Display box — clicking opens the dropdown -->
+                    <div data-bind="click: toggleNationalityDropdown, clickBubble: false"
+                         style="padding: 7px 9px; font-size: 12px; font-family: 'Segoe UI', sans-serif;
+                border: 1.5px solid #D1D5DB; border-radius: 5px; background: #FAFAFA;
+                color: #111827; cursor: pointer; display: flex; justify-content: space-between;
+                align-items: center; box-sizing: border-box; user-select: none;">
+                        <span data-bind="text: nationality() || 'Select Nationality',
+                          style: { color: nationality() ? '#111827' : '#9CA3AF' }"></span>
+                        <span style="font-size: 10px; color: #6B7280;"
+                              data-bind="text: nationalityDropdownOpen() ? '▲' : '▼'"></span>
+                    </div>
+
+                    <!-- Dropdown panel -->
+                    <!-- ko if: nationalityDropdownOpen() -->
+                    <div data-bind="click: function(){}, clickBubble: false"
+                         style="position: absolute; top: 100%; left: 0; right: 0; z-index: 999;
+                background: #fff; border: 1.5px solid #C6973F; border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12); margin-top: 2px; overflow: hidden;">
+
+                        <!-- Search input -->
+                        <div style="padding: 6px 8px; border-bottom: 1px solid #E5E7EB; background: #F9FAFB;">
+                            <input id="nationalitySearchInput"
+                                   type="text"
+                                   placeholder="Type to search..."
+                                   data-bind="value: nationalitySearch,
+                              valueUpdate: 'input',
+                              click: function(d,e){ e.stopPropagation(); }"
+                                   style="width: 100%; padding: 5px 8px; font-size: 12px;
+                          font-family: 'Segoe UI', sans-serif; border: 1.5px solid #D1D5DB;
+                          border-radius: 4px; background: #fff; color: #111827;
+                          outline: none; box-sizing: border-box;" />
+                        </div>
+
+                        <!-- Filtered list -->
+                        <ul data-bind="foreach: filteredNationalities"
+                            style="list-style: none; margin: 0; padding: 4px 0;
+                   max-height: 180px; overflow-y: auto;">
+                            <li data-bind="text: ShortName,
+                           click: $parent.selectNationality.bind($parent),
+                           event: { mouseover: function(d,e){ e.target.style.background='#FEF3C7'; },
+                                    mouseout:  function(d,e){ e.target.style.background=''; } }"
+                                style="padding: 7px 12px; font-size: 12px; font-family: 'Segoe UI', sans-serif;
+                       color: #111827; cursor: pointer;">
+                            </li>
+                        </ul>
+
+                        <!-- Empty state -->
+                        <!-- ko if: filteredNationalities().length === 0 -->
+                        <div style="padding: 10px 12px; font-size: 12px; color: #9CA3AF; text-align: center;">
+                            No results found
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                    <span class="errmsg"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Language</label>
+                    <select data-bind="options: languageOption,
+                                       optionsText: 'Text',
+                                       optionsValue: 'Value',
+                                       value: language">
+                    </select>
+                    <span class="errmsg"></span>
+                </div>
+
+                <!-- ── Divider ── -->
+                <hr class="enr-section-divider" />
+
+                <!-- ── Contact & Location ── -->
+                <div class="enr-section-label">Contact &amp; Location</div>
+
+                <div class="enr-f">
+                    <label>Phone <span>*</span></label>
+                    <div style="display:flex; width:100%; gap:4px; box-sizing:border-box; overflow:hidden;">
+                        <select id="countryCode"
+                                style="max-width:110px; min-width:110px; flex-shrink:0;
+                                   padding:7px 9px; font-size:12px; font-family:'Segoe UI',sans-serif;
+                                   border:1.5px solid #D1D5DB; border-radius:5px;
+                                   background:#FAFAFA; color:#111827; box-sizing:border-box;"
+                                data-bind="options: countryCode,
+                                               optionsText: function(item){ return item.ShortName + ' (+' + item.MobileCountryCode + ')' },
+                                               optionsValue: 'MobileCountryCode',
+                                               value: prefix,
+                                               event: { change: onCountryCodeChange }">
+                        </select>
+                        <input id="phone" type="tel" placeholder="Phone number" style="flex:1;" maxlength="20" data-bind="value: phone, valueUpdate: 'input', css: { err: phoneError() }, event: { input: onPhoneInput }" />
+                    </div>
+                    <span class="errmsg" data-bind="text: phoneError()"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Email</label>
+                    <input type="email" placeholder="email@example.com" data-bind="value: email, css: { err: emailError() }, event: { input: function() { emailError('') } }" />
+                    <span class="errmsg" data-bind="text: emailError"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>City</label>
+                    <select disabled id="customerCityInput" data-bind="options: cityOption,
+                                                                        optionsText:'Name',
+                                                                        optionsValue:'Name',
+                                                                        optionsCaption: 'Select City',
+                                                                        value: city">
+                    </select>
+                    <span class="errmsg"></span>
+                </div>
+
+                <!--<div class="enr-f">
+        <label>Country</label>
+        <select data-bind="options: shukranCountries,
+                           optionsText: 'ShortName',
+                           optionsValue: 'CountryRegionId',
+                           optionsCaption: 'Select country',
+                           value: country">
+        </select>
+        <span class="errmsg"></span>
+    </div>-->
+                <!-- ── Divider ── -->
+                <hr class="enr-section-divider" />
+
+                <!-- ── Consent ── -->
+                <div class="enr-section-label">Consent</div>
+
+                <div class="enr-f">
+                    <label>PDPL Consent <span>*</span></label>
+                    <div style="display:flex; align-items:center; gap:10px; padding: 4px 0;">
+                        <div id="ToggleConsent" class="overlay" contenteditable="false"></div>
+                    </div>
+                    <span class="errmsg" data-bind="text: consentError()"></span>
+                </div>
+
+                <div class="enr-f">
+                    <label>Marketing Consent</label>
+                    <div style="display:flex; align-items:center; gap:10px; padding: 4px 0;">
+                        <div id="ToggleMarketingConsent" class="overlay" contenteditable="false"></div>
+                    </div>
+                    <span class="errmsg"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

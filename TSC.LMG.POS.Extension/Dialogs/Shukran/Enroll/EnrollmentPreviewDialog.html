@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .previewDialog {
+            font-family: "Segoe UI", sans-serif;
+            padding: 16px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #1a1a1a;
+        }
+
+        .previewDialog table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* important */
+        }
+
+        .previewDialog table tr {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .previewDialog table tr:last-child {
+            border-bottom: none;
+        }
+
+        .previewDialog table td {
+            padding: 10px 8px;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+            .previewDialog table td:first-child {
+                color: #666666;
+                width: 45%; 
+                font-weight: 400;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+
+        .previewDialog table td:last-child {
+            color: #1a1a1a;
+            font-weight: 600;
+            width: 60%;
+            /* FIX */
+            word-break: break-word;
+            overflow-wrap: break-word;
+            text-align: left; /* change from right */
+        }
+    </style>
+</head>
+<body>
+    <div class="previewDialog">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td data-bind="text: firstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td data-bind="text: lastName"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td data-bind="text: phone"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td data-bind="text: email"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td data-bind="text: gender"></td>
+            </tr>
+            <tr>
+                <td>Nationality</td>
+                <td data-bind="text: nationality"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td data-bind="text: city"></td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td data-bind="text: country"></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td data-bind="text: dob"></td>
+            </tr>
+            <tr>
+                <td>Language</td>
+                <td data-bind="text: language"></td>
+            </tr>
+            <tr>
+                <td>Consent Given</td>
+                <td data-bind="text: consentGiven"></td>
+            </tr>
+            <tr>
+                <td>Market Consent</td>
+                <td data-bind="text: marketingConsentGiven"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

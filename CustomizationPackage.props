@@ -1,0 +1,12 @@
+<Project>
+<Import Project="repo.props" />
+<PropertyGroup>
+<Version>1.0.0.0</Version>
+<PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+<PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+<PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+<PackageName Condition="'$(PackageName)' == ''">TSC.LMG.Extension</PackageName>
+<PackageDisplayName Condition="'$(PackageDisplayName)' == ''">LMGApollo Customizations</PackageDisplayName>
+<PackageDescription Condition="'$(PackageDescription)' == ''">LMGApollo Customizations</PackageDescription>
+</PropertyGroup>
+</Project>

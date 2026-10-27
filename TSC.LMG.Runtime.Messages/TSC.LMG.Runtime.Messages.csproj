@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\CustomizationPackage.props" />
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Include="Network\GetNITokenServiceRequest.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Analyzers" Version="$(CommerceSdkPackagesVersion)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Runtime" Version="$(CommerceSdkPackagesVersion)" />
+		
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\TSC.LMG.Runtime.Model\TSC.LMG.Runtime.Model.csproj" />
+	</ItemGroup>
+
+</Project>

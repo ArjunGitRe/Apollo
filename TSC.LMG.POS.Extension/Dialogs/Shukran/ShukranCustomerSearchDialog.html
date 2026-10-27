@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shukran Customer Search</title>
+    <style>
+        .shukran-customer-search-dialog {
+            width: 100%;
+        }
+
+        .dialog-content {
+            width: 280px; /* fixed nice width */
+            margin: 60px auto 0 auto; /* center horizontally */
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .dialog-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #333;
+            text-align: left;
+            width:280px;
+        }
+
+        .dialog-select,
+        .dialog-input {
+            height: 42px;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid #c8c8c8;
+            border-radius: 4px;
+            width: 280px;
+            box-sizing: border-box;
+        }
+
+            .dialog-select:focus,
+            .dialog-input:focus {
+                outline: none;
+                border-color: #0078d4; /* D365 blue */
+            }
+
+        .validation-error {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #d13438;
+        }
+    </style>
+</head>
+<body>
+    <div class="shukran-customer-search-dialog">
+        <div class="dialog-content">
+
+            <!-- Search Type -->
+            <div class="form-group">
+                <label class="dialog-label" data-bind="text: labelSearchType"></label>
+                <select class="dialog-select"
+                        data-bind="options: searchOptions,
+                                   optionsText: 'text',
+                                   optionsValue: 'value',
+                                   optionsCaption: 'Select search type...',
+                                   value: selectedSearchType">
+                </select>
+            </div>
+
+            <!-- Dynamic Input -->
+            <div class="form-group"
+                 data-bind="if: showInputField">
+
+                <label class="dialog-label"
+                       data-bind="text: inputLabel"></label>
+
+                <input class="dialog-input"
+                       type="text"
+                       data-bind="value: searchValue,
+                                  attr: { placeholder: inputPlaceholder }" />
+
+                <!-- Validation Message -->
+                <div class="validation-error"
+                     data-bind="visible: validationMessage().length > 0,
+                                text: validationMessage">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

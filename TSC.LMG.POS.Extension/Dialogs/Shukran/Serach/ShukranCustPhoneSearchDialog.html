@@ -1,0 +1,25 @@
+<div id="phSearchRoot" style="padding: 12px;">
+
+    <div style="display: flex; gap: 8px; align-items: center;">
+        <select id="phCountryCode"
+                style="flex: 1;"
+                data-bind="options: countryCodeList,
+                           optionsText: function(item){ return item.ShortName + ' (+' + item.MobileCountryCode + ')' },
+                           optionsValue: 'MobileCountryCode',
+                           value: selectedPrefix,
+                           event: { change: onPrefixChange }">
+        </select>
+        <input id="phPhoneInput"
+               type="number"
+               placeholder="Phone number"
+               maxlength="20"
+               style="flex: 1;"
+               data-bind="value: phoneNumber,
+                          event: { input: onPhoneInput, keydown: onKeyDown },
+                          valueUpdate: 'input'" />
+    </div>
+
+    <div style="color: red; font-size: 11px; margin-top: 4px; min-height: 16px;"
+         data-bind="text: phoneError"></div>
+
+</div>
